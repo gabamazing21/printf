@@ -6,8 +6,7 @@
  */
 int _printf(const string format, ...)
 {
-	/*Define an array of specifier_format structs, each containing a specifier and a function */
-	/* reference the header file to understand*/
+	/*Define an array of specifier_format struct*/
 	specifier_format d[] =  {
 		{"c", _print_char}, {"s", _print_str},
 		{"%", _print_mod}
@@ -15,7 +14,7 @@ int _printf(const string format, ...)
 	va_list varArg; /*Declare a variable argument list.*/
 	int len = 0, i = 0, j;
 
-	va_start(varArg, format);/*Initialize the variable argument list.*/
+	va_start(varArg, format);
 
 	if (format == NULL)
 		return (-1);
@@ -23,7 +22,7 @@ int _printf(const string format, ...)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);/*Print non-% characters.*/
+			_putchar(format[i]);
 			len++;
 		}
 		else
@@ -33,13 +32,13 @@ int _printf(const string format, ...)
 			j = 0;
 			while (j < 3)
 			{
-				if (format[i + 1] == *(d[j].spec)) /*Checks if format[i + 1] iis matching a specifer*/
-					break;//When it finds a specifer, it breaks out of the loop.
+				if (format[i + 1] == *(d[j].spec))
+					break;
 				j++;
 			}
 			if (j < 3)
 			{
-				len += d[j].func(varArg);/*Call the appropriate function for the specifier.*/
+				len += d[j].func(varArg);
 				i += 1;
 			}
 		}
