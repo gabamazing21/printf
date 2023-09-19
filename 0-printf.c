@@ -1,4 +1,5 @@
 #include "main.h"
+int _printf(const string format, ...);
 /**
  * _printf - function that produces output according to a format.
  * @format: a character string
@@ -40,6 +41,11 @@ int _printf(const string format, ...)
 			{
 				len += d[j].func(varArg);
 				i += 1;
+			}
+			else
+			{
+				_putchar(format[i]);
+				len++;
 			}
 		}
 		i++;
