@@ -1,45 +1,4 @@
 #include "main.h"
-#include <unistd.h>
-int _printf(const string format, ...);
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-<<<<<<< HEAD
-	va_list ptr;
-	const char formater;
-	int i,va;
-
-	va_start(ptr, format);
-	if (format == NULL)
-		return (NULL);
-	for (i = 0; *format != '\0'; i++)
-	{
-		if ( *format == 'c')
-		{
-			val = va_arg(ptr, char);
-			_putchar(val);
-
-		}
-		else if ( *format == 's')
-		{
-			val = va_arg(ptr, char);
-		}
-		else if (*format == '%')
-		{
-			val = va_arg(ptr, char);
-		}
-	}
-	_putchar('\n');
-=======
-	return (write(1, &c, 1));
-}
-
 /**
  * _printf - function that produces output according to a format.
  * @format: a character string
@@ -47,14 +6,16 @@ int _putchar(char c)
  */
 int _printf(const string format, ...)
 {
+	/*Define an array of specifier_format structs, each containing a specifier and a function */
+	/* reference the header file to understand*/
 	specifier_format d[] =  {
 		{"c", _print_char}, {"s", _print_str},
 		{"%", _print_mod}
 	};
-	va_list varArg;
+	va_list varArg; /*Declare a variable argument list.*/
 	int len = 0, i = 0, j;
 
-	va_start(varArg, format);
+	va_start(varArg, format);/*Initialize the variable argument list.*/
 
 	if (format == NULL)
 		return (-1);
@@ -62,7 +23,7 @@ int _printf(const string format, ...)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
+			_putchar(format[i]);/*Print non-% characters.*/
 			len++;
 		}
 		else
@@ -72,24 +33,18 @@ int _printf(const string format, ...)
 			j = 0;
 			while (j < 3)
 			{
-				if (format[i + 1] == *(d[j].spec))
-					break;
+				if (format[i + 1] == *(d[j].spec)) /*Checks if format[i + 1] iis matching a specifer*/
+					break;//When it finds a specifer, it breaks out of the loop.
 				j++;
 			}
 			if (j < 3)
 			{
-				len += d[j].func(varArg);
+				len += d[j].func(varArg);/*Call the appropriate function for the specifier.*/
 				i += 1;
-			}
-			else
-			{
-				_putchar(format[i]);
-				len++;
 			}
 		}
 		i++;
 	}
 	va_end(varArg);
 	return (len);
->>>>>>> aea0a2ad25304936fe5541152466f4ffe8d9ba9f
 }
