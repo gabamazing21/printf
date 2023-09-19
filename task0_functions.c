@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 /**
  * _strlen - returns the length of a string
  * @str: string to be accessed
@@ -7,7 +6,6 @@
  */
 int _strlen(string str)
 {
-	str = malloc(100);
 	int len = 0;
 
 	while (str[len] != '\0')
