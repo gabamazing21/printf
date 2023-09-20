@@ -1,10 +1,10 @@
 #include "main.h"
 /**
-  * _print_int - prints integer values to stdout
+  * _print_dec - prints integer values to stdout
   * @varArg: variable argument
   * Return: the len of the printed value
   */
-int _print_int(va_list varArg)
+int _print_dec(va_list varArg)
 {
 	int number, len = 0;
 
@@ -34,5 +34,17 @@ int recursive_print(long num, int len)
 	return (++len);
 }
 
+/**
+  * _print_int - prints integer values to stdout
+  * @varArg: variable argument
+  * Return: the len of the printed value
+  */
+int _print_int(va_list varArg)
+{
+	int number, len = 0;
 
+	number = va_arg(varArg, int);
+	len += recursive_print(number, len);
+	return (len);
+}
 

@@ -10,7 +10,7 @@ int _printf(const string format, ...)
 	/*Define an array of specifier_format struct*/
 	specifier_format d[] =  {
 		{"c", _print_char}, {"s", _print_str},
-		{"%", _print_mod}, {"d", _print_int},
+		{"%", _print_mod}, {"d", _print_dec},
 		{"i", _print_int}
 	};
 	va_list varArg; /*Declare a variable argument list.*/
@@ -38,7 +38,7 @@ int _printf(const string format, ...)
 					break;
 				j++;
 			}
-			if (j < 5)
+			if (j < 6)
 			{
 				len += d[j].func(varArg);
 				i += 1;
