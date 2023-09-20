@@ -26,4 +26,6 @@ int _print_char(va_list varArg);
 int _print_str(va_list varArg);
 int _print_mod(va_list varArg);
 int _strlen(string str);
+int recursive_print(long num, int len);
+int _print_int(va_list varArg);
 #endif
