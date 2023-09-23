@@ -30,4 +30,9 @@ int recursive_print(long num, int len);
 int _print_int(va_list varArg);
 int _print_dec(va_list varArg);
 int _print_binary(va_list varArg);
+int _print_oct(va_list varArg);
+int _print_unsigned(va_list varArg);
+int recursive_print_unsigned_int(long num, int len);
+int _print_hexa(va_list varArg);
+int _print_HEXA(va_list varArg);
 #endif

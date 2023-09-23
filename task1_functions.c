@@ -47,4 +47,3 @@ int _print_int(va_list varArg)
 	len += recursive_print(number, len);
 	return (len);
 }
-

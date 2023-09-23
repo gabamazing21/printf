@@ -11,7 +11,9 @@ int _printf(const string format, ...)
 	specifier_format d[] =  {
 		{"c", _print_char}, {"s", _print_str},
 		{"%", _print_mod}, {"d", _print_dec},
-		{"i", _print_int}, {"b", _print_binary}
+		{"i", _print_int}, {"b", _print_binary},
+		{"u", _print_unsigned}, {"o", _print_oct},
+		{"x", _print_hexa}, {"X", _print_HEXA}
 	};
 	va_list varArg; /*Declare a variable argument list.*/
 	int len = 0, i = 0, j;
@@ -32,13 +34,13 @@ int _printf(const string format, ...)
 			if (format[i + 1] == '\0' &&  format[i] == '%')
 				return (-1);
 			j = 0;
-			while (j < 7)
+			while (j < 11)
 			{
 				if (format[i + 1] == *(d[j].spec))
 					break;
 				j++;
 			}
-			if (j < 7)
+			if (j < 11)
 			{
 				len += d[j].func(varArg);
 				i += 1;
