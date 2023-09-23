@@ -34,13 +34,13 @@ int _printf(const string format, ...)
 			if (format[i + 1] == '\0' &&  format[i] == '%')
 				return (-1);
 			j = 0;
-			while (j < 11)
+			while (j < 10)
 			{
 				if (format[i + 1] == *(d[j].spec))
 					break;
 				j++;
 			}
-			if (j < 11)
+			if (j < 10)
 			{
 				len += d[j].func(varArg);
 				i += 1;
